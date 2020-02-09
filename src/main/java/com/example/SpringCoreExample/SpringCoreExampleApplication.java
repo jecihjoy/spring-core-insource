@@ -14,11 +14,15 @@ public class SpringCoreExampleApplication {
 	private static Log log = LogFactory.getLog(SpringCoreExampleApplication.class);
 
 	public static void main(String[] args) {
-		log.error("I'm soo used to error logs");
-		AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringCoreExampleApplication.class);
-		log.error("beans" +applicationContext.getBeanDefinitionNames());
-		ArrayService arrayService = applicationContext.getBean(ArrayService.class);
-		log.info("The sum of the numbers is "+arrayService.getSum());
+		log.info("Application running");
+		try(AnnotationConfigApplicationContext applicationContext =
+					new AnnotationConfigApplicationContext(SpringCoreExampleApplication.class)){
+			log.info("beans" +applicationContext.getBeanDefinitionNames());
+			ArrayService arrayService = applicationContext.getBean(ArrayService.class);
+			log.info("The sum of the numbers is "+arrayService.getSum());
+			//applicationContext.close();
+		}
+
 	}
 
 }
