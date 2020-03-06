@@ -1,5 +1,6 @@
 package com.example.SpringCoreExample;
 
+import com.example.SpringCoreExample.basicApp.ArrayDao;
 import com.example.SpringCoreExample.basicApp.ArrayService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -17,10 +18,14 @@ public class SpringCoreExampleApplication {
 		log.info("Application running");
 		try(AnnotationConfigApplicationContext applicationContext =
 					new AnnotationConfigApplicationContext(SpringCoreExampleApplication.class)){
-			log.info("beans" +applicationContext.getBeanDefinitionNames());
 			ArrayService arrayService = applicationContext.getBean(ArrayService.class);
 			log.info("The sum of the numbers is "+arrayService.getSum());
-			//applicationContext.close();
+
+			//prototype scope with proxy
+			ArrayDao arrayDao1 = applicationContext.getBean(ArrayDao.class,args);
+			ArrayDao arrayDao2 = applicationContext.getBean(ArrayDao.class,args);
+			log.info("arrayDao1 " + arrayDao1);
+			log.info("arrayDao2 " + arrayDao2);
 		}
 
 	}
