@@ -1,6 +1,6 @@
 package com.example.SpringCoreExample;
 
-import com.example.SpringCoreExample.XMLExample.UsersDao;
+import com.example.SpringCoreExample.XMLExample.UserDao;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,8 +18,8 @@ public class SpringCoreXmlExample {
         try(ClassPathXmlApplicationContext applicationContext =
                     new ClassPathXmlApplicationContext("applicationContext.xml")){
             log.info("beans" +applicationContext.getBeanDefinitionNames());
-            UsersDao usersDao = applicationContext.getBean(UsersDao.class);
-            log.info("The connection used is "+usersDao.getJdbcConnection());
+            UserDao usersDao = applicationContext.getBean(UserDao.class);
+            log.info("The connection used is "+usersDao.getXmlJdbcConnection());
             //applicationContext.close();
         }
 

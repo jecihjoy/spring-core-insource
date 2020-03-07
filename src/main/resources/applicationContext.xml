@@ -8,7 +8,7 @@
         <!-- collaborators and configuration for this bean go here -->
     </bean>
 
-    <bean id="userDao" class="com.example.SpringCoreExample.XMLExample.UsersDao">
+    <bean id="userDao" class="com.example.SpringCoreExample.XMLExample.UserDao">
         <!-- collaborators and configuration for this bean go here -->
         <property name="xmlJdbcConnection" ref="xmlJdbcConnection"/>
     </bean>

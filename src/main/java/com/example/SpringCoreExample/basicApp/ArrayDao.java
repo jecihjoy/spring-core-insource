@@ -9,7 +9,10 @@ import javax.inject.Named;
 @Named
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ArrayDao {
-    public int[] getData() {
+
+    public int[] getData()
+    {
         return new int[] { 1, 2, 3, 4, 5, 6 };
     }
+
 }
