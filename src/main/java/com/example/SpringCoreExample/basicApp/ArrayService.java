@@ -1,9 +1,11 @@
 package com.example.SpringCoreExample.basicApp;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import javax.inject.Named;
 
-@Named
+@Service
 public class ArrayService {
 
     @Autowired
