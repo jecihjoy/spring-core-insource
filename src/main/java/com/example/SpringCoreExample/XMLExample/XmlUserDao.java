@@ -1,6 +1,6 @@
 package com.example.SpringCoreExample.XMLExample;
 
-public class UserDao {
+public class XmlUserDao {
 
     private XmlJdbcConnection xmlJdbcConnection;
 
