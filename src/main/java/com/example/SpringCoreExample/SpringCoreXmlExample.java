@@ -1,6 +1,7 @@
 package com.example.SpringCoreExample;
 
 import com.example.SpringCoreExample.XMLExample.XmlUserDao;
+import com.example.SpringCoreExample.basicApp.ArrayService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,9 +18,11 @@ public class SpringCoreXmlExample {
         log.info("Application running");
         try(ClassPathXmlApplicationContext applicationContext =
                     new ClassPathXmlApplicationContext("applicationContext.xml")){
-            log.info("beans" +applicationContext.getBeanDefinitionNames());
+            log.info("Beans loaded {} -> " +applicationContext.getBeanDefinitionNames());
             XmlUserDao usersDao = applicationContext.getBean(XmlUserDao.class);
+            ArrayService service = applicationContext.getBean(ArrayService.class);
             log.info("The connection used is "+usersDao.getXmlJdbcConnection());
+            log.info("Sum from the basic app package is "+service.getSum());
             //applicationContext.close();
         }
 
