@@ -1,0 +1,28 @@
+package com.example.SpringCoreExample;
+
+import com.example.SpringCoreExample.springCoreApp.Service.EmployeeService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan("com.example.SpringCoreExample.springCoreApp")
+public class SpringCoreApplication {
+
+    private static Log log = LogFactory.getLog(com.example.SpringCoreExample.SpringCoreExampleApplication.class);
+
+    public static void main(String[] args) {
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(SpringCoreApplication.class);
+
+        log.info("Application running");
+            EmployeeService employeeService = context.getBean(EmployeeService.class);
+            log.info("The employee retrieved is "+employeeService.findById(1l).getFirstName() + " " +employeeService.findById(1l).getLastName());
+
+        context.close();
+
+    }
+
+}

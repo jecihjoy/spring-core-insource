@@ -14,10 +14,6 @@
 	<name>SpringCoreExample</name>
 	<description>Demo project for Spring Boot</description>
 
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -27,6 +23,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
+			<version>5.0.6.RELEASE</version>
 		</dependency>
 
 		<dependency>
@@ -46,6 +43,28 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
+
+		<!--spring core app dependancies-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${org.springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<version>1.0.2.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -57,4 +76,10 @@
 		</plugins>
 	</build>
 
+	<properties>
+		<org.springframework.version>3.2.8.RELEASE</org.springframework.version>
+		<java.version>1.8</java.version>
+		<hibernate.version>5.4.12.Final</hibernate.version>
+		<mysql.version>6.0.6</mysql.version>
+	</properties>
 </project>
