@@ -16,7 +16,14 @@ public class Employee {
 
     private String lastName;
 
-    public Employee() { }
+    public Employee() {
+    }
+
+    public Employee(Long id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public Employee(String firstName, String lastName) {
         this.firstName = firstName;
