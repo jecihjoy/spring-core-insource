@@ -10,14 +10,10 @@
     <context:component-scan base-package="com.example.SpringCoreExample.basicApp"/>
 
     <bean id="xmlJdbcConnection" class="com.example.SpringCoreExample.XMLExample.XmlJdbcConnection">
-        <!-- collaborators and configuration for this bean go here -->
     </bean>
 
     <bean id="userDao" class="com.example.SpringCoreExample.XMLExample.XmlUserDao">
-        <!-- collaborators and configuration for this bean go here -->
         <property name="xmlJdbcConnection" ref="xmlJdbcConnection"/>
     </bean>
-
-    <!-- more bean definitions go here -->
 
 </beans>
