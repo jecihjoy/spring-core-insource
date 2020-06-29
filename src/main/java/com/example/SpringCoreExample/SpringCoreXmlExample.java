@@ -23,7 +23,6 @@ public class SpringCoreXmlExample {
             ArrayService service = applicationContext.getBean(ArrayService.class);
             log.info("The connection used is "+usersDao.getXmlJdbcConnection());
             log.info("Sum from the basic app package is "+service.getSum());
-            //applicationContext.close();
         }
 
     }

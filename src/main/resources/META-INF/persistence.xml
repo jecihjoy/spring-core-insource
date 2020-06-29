@@ -2,7 +2,6 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
 
     <persistence-unit name="LOCAL_PERSISTENCE">
-<!--        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.example.SpringCoreExample.springCoreApp.Model.Employee</class>
         <properties>
