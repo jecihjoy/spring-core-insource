@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd"
             default-init-method="myInit" default-destroy-method="beanCleanup">
 
     <bean id="parentTriangle" class="com.example.sfjavabrains.Triangle" scope="singleton">
@@ -28,10 +31,29 @@
         <property name="y" value="0"/>
     </bean>
 
-<!--    must be defined here for it to work-->
+    <bean id="center" class="com.example.sfjavabrains.Point">
+        <constructor-arg index="0" value="${pointA.pointX}"/>
+        <constructor-arg index="1" value="${pointA.pointY}"/>
+    </bean>
+
+    <!-- Must be defined here for it to work-->
     <bean class="com.example.sfjavabrains.DisplayNameBeanPostProcessor"/>
     <bean class="com.example.sfjavabrains.BeanFactoryPostProcessorExample"/>
+
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations" value="pointsconfig.properties"/>
     </bean>
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>mymessages</value>
+            </list>
+        </property>
+    </bean>
+
+    <context:component-scan base-package="com.example.sfjavabrains"/>
+    <!-- Instead of defining individual AnnotationBeanPostProcessors-->
+    <context:annotation-config/>
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
 </beans>

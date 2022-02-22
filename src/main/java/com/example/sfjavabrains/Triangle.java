@@ -4,10 +4,12 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-public class Triangle implements ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean {
+public class Triangle implements Shape,ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean {
 
     private Point pointA;
     private Point pointB;
@@ -18,6 +20,8 @@ public class Triangle implements ApplicationContextAware, BeanNameAware, Initial
         return pointA;
     }
 
+    @Required
+    @Autowired
     public void setPointA(Point pointA) {
         this.pointA = pointA;
     }
@@ -38,6 +42,7 @@ public class Triangle implements ApplicationContextAware, BeanNameAware, Initial
         this.pointC = pointC;
     }
 
+    @Override
     public void draw() {
         System.out.println("Point A = " + getPointA().getX() + "," + getPointA().getY());
         System.out.println("Point B = " + getPointB().getX() + "," + getPointB().getY());
@@ -48,7 +53,7 @@ public class Triangle implements ApplicationContextAware, BeanNameAware, Initial
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.context = applicationContext;
         Point pointA = (Point) this.context.getBean("pointA");
-        System.out.println("POINT A point: " + pointA.getX() + pointA.getY());
+        System.out.println("ApplicationContextAware Example: " + pointA.getX() + " "+ pointA.getY());
     }
 
     @Override
@@ -56,8 +61,9 @@ public class Triangle implements ApplicationContextAware, BeanNameAware, Initial
         System.out.println("Current bean name " + s);
     }
 
+    /*called after bean initialization*/
     @Override
-    public void afterPropertiesSet() throws Exception { //called after bean initialization
+    public void afterPropertiesSet() throws Exception {
         System.out.println("Initializing bean method called in bean triangle");
     }
 
@@ -67,10 +73,10 @@ public class Triangle implements ApplicationContextAware, BeanNameAware, Initial
     }
 
     public void myInit() {
-        System.out.println("my init method bean triable");
+        System.out.println("my init triable");
     }
 
     public void beanCleanup() {
-        System.out.println("Bean cleanup");
+        System.out.println("destroy triangle");
     }
 }
