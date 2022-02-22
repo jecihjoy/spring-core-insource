@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="parentTriangle" class="com.example.sfjavabrains.Triangle" scope="singleton">
+        <property name="pointA" ref="pointA"/>
+    </bean>
+
+    <bean id="triangle" class="com.example.sfjavabrains.Triangle" scope="singleton" parent="parentTriangle">
+        <property name="pointB" ref="pointB"/>
+        <property name="pointC" ref="pointC"/>
+    </bean>
+
+    <bean id="pointA" class="com.example.sfjavabrains.Point">
+        <constructor-arg index="0" value="0"/>
+        <constructor-arg index="1" value="0"/>
+    </bean>
+
+    <bean id="pointB" class="com.example.sfjavabrains.Point">
+        <property name="x" value="-20"/>
+        <property name="y" value="0"/>
+    </bean>
+    <bean id="pointC" class="com.example.sfjavabrains.Point">
+        <property name="x" value="20"/>
+        <property name="y" value="0"/>
+    </bean>
+</beans>
