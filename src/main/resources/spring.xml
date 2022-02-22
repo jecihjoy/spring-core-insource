@@ -15,8 +15,8 @@
     </bean>
 
     <bean id="pointA" class="com.example.sfjavabrains.Point">
-        <constructor-arg index="0" value="0"/>
-        <constructor-arg index="1" value="0"/>
+        <constructor-arg index="0" value="${pointA.pointX}"/>
+        <constructor-arg index="1" value="${pointA.pointY}"/>
     </bean>
 
     <bean id="pointB" class="com.example.sfjavabrains.Point">
@@ -26,5 +26,12 @@
     <bean id="pointC" class="com.example.sfjavabrains.Point">
         <property name="x" value="20"/>
         <property name="y" value="0"/>
+    </bean>
+
+<!--    must be defined here for it to work-->
+    <bean class="com.example.sfjavabrains.DisplayNameBeanPostProcessor"/>
+    <bean class="com.example.sfjavabrains.BeanFactoryPostProcessorExample"/>
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="pointsconfig.properties"/>
     </bean>
 </beans>
