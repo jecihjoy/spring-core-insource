@@ -8,30 +8,30 @@
            http://www.springframework.org/schema/context/spring-context-2.5.xsd"
             default-init-method="myInit" default-destroy-method="beanCleanup">
 
-    <bean id="parentTriangle" class="com.example.sfjavabrains.Triangle" scope="singleton">
+    <bean id="parentTriangle" class="com.example.sfjavabrains.beans.Triangle" scope="singleton">
         <property name="pointA" ref="pointA"/>
     </bean>
 
-    <bean id="triangle" class="com.example.sfjavabrains.Triangle" scope="singleton" parent="parentTriangle">
+    <bean id="triangle" class="com.example.sfjavabrains.beans.Triangle" scope="singleton" parent="parentTriangle">
         <property name="pointB" ref="pointB"/>
         <property name="pointC" ref="pointC"/>
     </bean>
 
-    <bean id="pointA" class="com.example.sfjavabrains.Point">
+    <bean id="pointA" class="com.example.sfjavabrains.beans.Point">
         <constructor-arg index="0" value="${pointA.pointX}"/>
         <constructor-arg index="1" value="${pointA.pointY}"/>
     </bean>
 
-    <bean id="pointB" class="com.example.sfjavabrains.Point">
+    <bean id="pointB" class="com.example.sfjavabrains.beans.Point">
         <property name="x" value="-20"/>
         <property name="y" value="0"/>
     </bean>
-    <bean id="pointC" class="com.example.sfjavabrains.Point">
+    <bean id="pointC" class="com.example.sfjavabrains.beans.Point">
         <property name="x" value="20"/>
         <property name="y" value="0"/>
     </bean>
 
-    <bean id="center" class="com.example.sfjavabrains.Point">
+    <bean id="center" class="com.example.sfjavabrains.beans.Point">
         <constructor-arg index="0" value="${pointA.pointX}"/>
         <constructor-arg index="1" value="${pointA.pointY}"/>
     </bean>
@@ -46,10 +46,13 @@
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basenames">
             <list>
-                <value>mymessages</value>
+                <value>messages</value>
             </list>
         </property>
     </bean>
+
+    <!--validators-->
+    <bean id="circleValidator" class="com.example.sfjavabrains.beans.CircleValidator"/>
 
     <context:component-scan base-package="com.example.sfjavabrains"/>
     <!-- Instead of defining individual AnnotationBeanPostProcessors-->

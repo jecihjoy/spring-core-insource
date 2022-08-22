@@ -1,4 +1,4 @@
-package com.example.sfjavabrains;
+package com.example.sfjavabrains.beans;
 
 public interface Shape {
     void draw();

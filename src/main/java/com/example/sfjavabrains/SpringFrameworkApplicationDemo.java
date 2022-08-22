@@ -1,5 +1,6 @@
 package com.example.sfjavabrains;
 
+import com.example.sfjavabrains.beans.Shape;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

@@ -1,4 +1,4 @@
-package com.example.sfjavabrains;
+package com.example.sfjavabrains.beans;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContextAware;
 
 public class Triangle implements Shape,ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean {
 
-    private Point pointA;
+    public Point pointA;
     private Point pointB;
     private Point pointC;
     private ApplicationContext context = null;
